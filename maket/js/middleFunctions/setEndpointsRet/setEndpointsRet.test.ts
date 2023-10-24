@@ -1,4 +1,4 @@
-import { Tpoints } from "@js/mainFunctions/events/calendar/calendarListenerClick/calendarListenerClick";
+import { Tpoints } from "@js/types/state/calendarsTypes";
 import { setEndpointsRet } from "./setEndpointsRet";
 import { test, describe, expect } from "@jest/globals";
 

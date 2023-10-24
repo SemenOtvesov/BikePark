@@ -5,6 +5,7 @@ import {screen, render,} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { setUserUidLocal } from '@js/mainFunctions/localState/userUidLocal'
 import deleteOrderButtonClick from './deleteOrderButtonClick'
+import { mock } from 'node:test'
 
 describe('deleteOrderButtonClick', ()=>{
 
@@ -13,8 +14,9 @@ describe('deleteOrderButtonClick', ()=>{
     })
 
     test('first toggle', async()=>{
+        const dispatch = mock.fn()
         render(<>
-            <button onClick={deleteOrderButtonClick} data-testid='button' data-button-type='toggle' id='deleteOrderButton'></button>
+            <button onClick={()=>deleteOrderButtonClick({dispatch, type: 'toggle'})} data-testid='button'></button>
             <div data-testid='popap' id='deleteOrderPopap'></div>
         </>)
 
@@ -25,8 +27,9 @@ describe('deleteOrderButtonClick', ()=>{
     })
 
     test('db toggle', async()=>{
+        const dispatch = mock.fn()
         render(<>
-            <button onClick={deleteOrderButtonClick} data-testid='button' data-button-type='toggle' id='deleteOrderButton'></button>
+            <button onClick={()=>deleteOrderButtonClick({dispatch, type: 'toggle'})} data-testid='button'></button>
             <div data-testid='popap' id='deleteOrderPopap'></div>
         </>)
 
