@@ -7,7 +7,7 @@ export const burgerClick: ReactEventHandler = (event) => {
     const nav = document.querySelector('nav')
     const header = document.querySelector('header')
     const headerContainer = document.getElementById('headerContainer')
-    const burger: HTMLSpanElement | null = target.closest('#burger')
+    const burger: HTMLSpanElement | null = document.getElementById('burger')
 
     nav?.classList.toggle('active')
     header?.classList.toggle('indexTop')

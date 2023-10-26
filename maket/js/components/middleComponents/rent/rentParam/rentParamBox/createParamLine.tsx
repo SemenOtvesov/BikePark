@@ -1,21 +1,19 @@
 import Image from "@js/components/componentModules/image/image"
-import { Tdispatch } from "@js/types/state/allState"
 import { TbikeRentCard, TbikeRentParamInfo } from "@js/types/state/rentStateTypes"
 import React from "react"
 import RentParam from "./rentParam"
 
 type TparamCreateParamLine = {
     complete: boolean, 
-    bike: TbikeRentCard, 
-    dispatch: Tdispatch,
+    bike: TbikeRentCard,
     bikeRentParamInfo: [] | TbikeRentParamInfo
 }
 
-export default function createParamLine({complete, bike, dispatch, bikeRentParamInfo}:TparamCreateParamLine){
+export default function createParamLine({complete, bike, bikeRentParamInfo}:TparamCreateParamLine){
     return (
         <div key={bike.bikeId} className="rent__param-line">
             <div className="rent__param image">
-                <Image imageType="bikeImage" imageName={bike.imgName} sourseMod={true}/>
+                <Image imageType="bikeImage" imageName={bike.imgRentName} sourseMod={true} modClass="reversWall"/>
             </div>
             <div className={!complete ? "rent__param text": "rent__param text big"}>{bike.title}</div>
             {

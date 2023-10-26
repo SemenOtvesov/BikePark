@@ -1,12 +1,24 @@
 import React from "react";
 import Image from "@componentModules/image/image";
 import { TbikeRentCard } from "@js/types/state/rentStateTypes";
-import addSelectBike from "@state/userState/requests/actions/addSelectBike";
-import { Tdispatch } from "@js/types/state/allState";
+import bikeCardClick from "@js/mainFunctions/events/click/bikeCardClick/bikeCardClick";
+import { useAppDispatch } from "@js/hooks/useAppDispatch";
+import { useSelector } from "react-redux";
+import { userStateInterfase } from "@js/types/state/userStateTypes";
+import { ToutletContext } from "@js/types/outletContext";
+import { useOutletContext } from "react-router-dom";
 
-export default (type: string, card: TbikeRentCard, dispatch: Tdispatch)=>{
+type Tprops = {
+    type: string, 
+    card: TbikeRentCard, 
+}
 
-    return <div key={Math.random()} className="searchResult__card-box">
+export default ({type, card}: Tprops)=>{
+    const dispatch = useAppDispatch()
+    const {userUid}: ToutletContext = useOutletContext()
+    const selectList = useSelector((state: userStateInterfase)=>state.userRouter.user.selectBikeList)
+
+    return <div className="searchResult__card-box">
             <div className="searchResult__card-title-box">
                 <div className="searchResult__card-title bold">{type}</div>
                 <div className="searchResult__card-title">{card.brandName}</div>
@@ -19,8 +31,10 @@ export default (type: string, card: TbikeRentCard, dispatch: Tdispatch)=>{
             </div>
             <div className="searchResult__card-prise">
                 {card.prise} AED/день
-            </div>
-            <button onClick={(e)=>dispatch(addSelectBike(card.bikeId))} className="searchResult__card-button">
+            </div> 
+            <button 
+                onClick={(e)=>bikeCardClick({dispatch, bikeId: card.bikeId, userUid, event: e})} 
+                className={`searchResult__card-button ${selectList?.includes(card.bikeId) ? 'blue' : ''}`}>
                 <span>Выбрать</span>
             </button>
         </div>

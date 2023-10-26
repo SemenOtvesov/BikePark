@@ -1771,6 +1771,13 @@ main {
 .searchResult__card-button.hiddenButton:hover div {
   z-index: 1;
 }
+.searchResult__card-button.err {
+  transform: translate(10px);
+  border-color: #F38181;
+}
+.searchResult__card-button.err span {
+  color: #F38181;
+}
 .searchResult__button {
   padding: 20px 100px;
   background-color: #297FFF;
@@ -1893,6 +1900,9 @@ main {
 }
 .rent__param.image picture.loading-img {
   display: flex;
+}
+.rent__param.image picture.reversWall img {
+  height: 70%;
 }
 .rent__param.text {
   flex: 0 0 40%;

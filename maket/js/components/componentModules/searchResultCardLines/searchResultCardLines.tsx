@@ -1,16 +1,17 @@
 import React from "react";
-import searchResultCard from "./searchResultCard/searchResultCard";
+import SearchResultCard from "./searchResultCard/searchResultCard";
 import { TbikeRentCard, TbikeRentInfo } from "@js/types/state/rentStateTypes";
 import { useAppDispatch } from "@js/hooks/useAppDispatch";
+import { ToutletContext } from "@js/types/outletContext";
+import { useOutletContext } from "react-router-dom";
 
 type Tparam = {
     quantityCards: number, 
-    scrollWidth: number,
     bikeRentInfo: TbikeRentInfo
 }
 
-export default ({quantityCards, scrollWidth, bikeRentInfo}: Tparam)=>{
-    const dispatch = useAppDispatch()
+export default ({quantityCards, bikeRentInfo}: Tparam)=>{
+    const {userUid, scrollWidth}: ToutletContext = useOutletContext()
     let maxItemLine = scrollWidth < 1025 ? 2 : 4;
 
     const sortingArr: Array<Array<{card:TbikeRentCard, cardType: string}>>  = [];
@@ -40,6 +41,13 @@ export default ({quantityCards, scrollWidth, bikeRentInfo}: Tparam)=>{
     })
     
     return sortingArr.map(category=>(<div key={Math.random()} className="searchResult__card-line">
-        {category.map(card=>searchResultCard(card.cardType, card.card, dispatch))}
+        {category.map(card=>(
+                <SearchResultCard
+                    type={card.cardType}
+                    card={card.card}
+                    key={card.card.bikeId + 'bikeId'}
+                />
+            )
+        )}
     </div>))
 }

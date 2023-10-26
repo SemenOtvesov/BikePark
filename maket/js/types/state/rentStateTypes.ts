@@ -6,7 +6,8 @@ export type TbikeRentInfoEl = {
 export type TbikeRentCard = {
     bikeId: number,
     brandName: string, 
-    imgName: string, 
+    imgName: string,
+    imgRentName: string, 
     title: string, 
     prise: number,
     checkRent: boolean,

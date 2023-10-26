@@ -58,6 +58,9 @@
           mix-blend-mode: multiply;
         }
         &.loading-img{display: flex;}
+        &.reversWall img{
+          height: 70%;
+        }
       }
     }
     &.text{

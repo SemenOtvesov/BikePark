@@ -135,6 +135,11 @@
           z-index: 1;
         }
       }
+      &.err{
+        transform: translate(10px);
+        border-color: $redLine;
+        & span{color: $redLine;}
+      }
     }
   }
 

@@ -1,7 +1,7 @@
 import { TbikeRentCard } from "@js/types/state/rentStateTypes";
 import { userStateInterfase } from "@js/types/state/userStateTypes";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import createParamLine from "./createParamLine";
 
 type Tprops = {
@@ -10,7 +10,6 @@ type Tprops = {
 }
 
 export default ({complete, bikeList}: Tprops)=>{
-    const dispatch = useDispatch()
     const bikeRentParamInfo = useSelector((state: userStateInterfase)=>state.rentRouter.bikeRentParamInfo)
 
     if(bikeList[0]){
@@ -31,7 +30,7 @@ export default ({complete, bikeList}: Tprops)=>{
                 }
                 <div className="rent__param prise prise title">Стоимость</div>
             </div>
-            {bikeList.map(bike=>createParamLine({complete, bike, dispatch, bikeRentParamInfo}))}
+            {bikeList.map(bike=>createParamLine({complete, bike, bikeRentParamInfo}))}
         </div>
         )
     }else{

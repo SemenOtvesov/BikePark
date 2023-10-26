@@ -55,7 +55,6 @@ export default ()=>{
         <>
             <SearchResultCardLines
                 quantityCards={quantityCards} 
-                scrollWidth={scrollWidth}
                 bikeRentInfo={localBikeInfo}
             />
             <button onClick={(e)=>setQuantityCards(quantity=>quantity+=2)} className="searchResult__button">Далее</button>
